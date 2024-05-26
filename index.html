@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places to Visit</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        td img {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Places to Visit</h1>
+<br/>
+    <h1>Bangkok 6th to 10th (4 nights)</h1>
+    <label for="category">Filter by Category:</label>
+    <select id="category" onchange="filterPlaces()">
+        <option value="all">All</option>
+        <!-- Add more categories as needed -->
+    </select>
+
+    <label for="area">Filter by Area:</label>
+    <select id="area" onchange="filterPlaces()">
+        <option value="all">All</option>
+    </select>
+
+    <label for="maxTime">Max Time from Hotel (minutes):</label>
+    <input type="number" id="maxTime" oninput="filterPlaces()">
+
+    <label for="location">Your Location:</label>
+    <input type="text" step="0.000001" id="location" onchange="filterPlaces()">
+<br/><br/>
+    <table id="placesTable">
+        <thead>
+            <tr>
+                <th>Place Name</th>
+                <th>Category</th>
+                <th>Area</th>
+                <th>TFH</th>
+                <th>Image</th>
+                <th>Map</th>
+                <th>Budget</th>
+                <th>Opening Hours</th>
+                <th>Distance (km)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-location="13.820067418466651, 100.56437872095486">
+                <td>Train Night Market DanNeramit</td>
+                <td>Market</td>
+                <td>Chatuchak</td>
+                <td>18</td>
+                <td><img src="images/Train Night Market DanNeramit.png"></td>
+                <td><img src="images/Train Night Market.png"></td>
+                <td></td>
+                <td><img src="images/Screenshot 2024-05-26 212013.png"></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.746425517974902, 100.49277093201592">
+                <td>The grand palace</td>
+                <td>Landmark/Temple</td>
+                <td>Phra Nakhon</td>
+                <td>8</td>
+                <td><img src="images/the grand palace.webp"></td>
+                <td><img src="images/Grand palace.png"></td>
+                <td>500 baht<br>63.84 MYR<br>10.71GBP</td>
+                <td>from 8:30 am - 3.30 pm everyday</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.746425517974902, 100.49277093201592">
+                <td>Temple of the Emerald Buddha (Wat Phra Kaew)</td>
+                <td>Landmark/Temple</td>
+                <td>Phra Nakhon</td>
+                <td>8</td>
+                <td>Next to grand palace</td>
+                <td><img src="images/wat phra.png"></td>
+                <td>with grand palace</td>
+                <td></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.76917348365159, 100.42908954631747">
+                <td>Wat pho</td>
+                <td>Landmark/Temple</td>
+                <td>Phra Nakhon</td>
+                <td>18</td>
+                <td>It has the reclining buddha</td>
+                <td><img src="images/wat pho.png"></td>
+                <td>300 Baht<br>38.30 MYR<br>7 GBP</td>
+                <td>8:00 a.m. – 6:30 p.m.</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.743875021018901, 100.48845589160504">
+                <td>Wat Arun</td>
+                <td>Landmark/Temple</td>
+                <td>Bangkok Yai</td>
+                <td>13</td>
+                <td>Go sunset, see from boat too</td>
+                <td><img src="images/wat arun.png"></td>
+                <td>100 Baht<br>12.76 MYR<br>2.14 GBP</td>
+                <td>daily from 8am-6pm</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.721773590123092, 100.47036233297665">
+                <td>wat paknam</td>
+                <td>Landmark/Temple</td>
+                <td>Phasi Charoen</td>
+                <td>21</td>
+                <td>Where the big buddha is sat</td>
+                <td><img src="images/Wat Paknam.png"></td>
+                <td>Free</td>
+                <td>7 am–8 pm</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.723536277167389, 100.52825044651148">
+                <td>Mahanakhon SkyWalk</td>
+                <td>Landmark/Temple</td>
+                <td></td>
+                <td>21</td>
+                <td>It's where you walk on glass in this tall building</td>
+                <td><img src="images/Mahanakhon SkyWalk.png"></td>
+                <td>850 Baht<br>108.50 MYR<br>18.20 GBP</td>
+                <td>10 am–7 pm</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.740292412175378, 100.50977555887482">
+                <td>ChinaTown</td>
+                <td>Market</td>
+                <td>Samphanthawong</td>
+                <td>10</td>
+                <td></td>
+                <td><img src="images/Screenshot 2024-05-26 212457.png"></td>
+                <td></td>
+                <td></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.731429272928246, 100.5417018091699">
+                <td>Lumphini Park</td>
+                <td>Park</td>
+                <td>Lumphini</td>
+                <td>15</td>
+                <td>Kinda close to china town</td>
+                <td><img src="images/Lumphini Park.png"></td>
+                <td></td>
+                <td>4:30 am–10 pm</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.73785203864654, 100.56044172053159">
+                <td>Terminal 21</td>
+                <td>Mall</td>
+                <td></td>
+                <td>17</td>
+                <td>Kinda close to lumpini park</td>
+                <td><img src="images/Terminal 21.png"></td>
+                <td></td>
+                <td>10 am–10 pm</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.726497050839654, 100.50996228845554">
+                <td>ICONSIAM</td>
+                <td>Mall</td>
+                <td></td>
+                <td>13</td>
+                <td></td>
+                <td><img src="images/ICONSIAM.png"></td>
+                <td></td>
+                <td>10 am–10 pm</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.74719589845591, 100.53916556314402">
+                <td>SF World Cinema</td>
+                <td>Cinema</td>
+                <td></td>
+                <td>14</td>
+                <td>The one with the beds</td>
+                <td><img src="images/The bed.png"></td>
+                <td>a queen (two people for THB1,800-THB2,000)<br>255.36 MYR<br>42.86 GBP</td>
+                <td></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.726497050839654, 100.50996228845554">
+                <td>LV The Place Bangkok - Le Café Louis Vuitton</td>
+                <td>Cafe</td>
+                <td></td>
+                <td>14</td>
+                <td>Really close to cinema</td>
+                <td><img src="images/lv.png"></td>
+                <td></td>
+                <td></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.810361198552165, 100.66376959284355">
+                <td>Chocolate Ville</td>
+                <td>Market</td>
+                <td></td>
+                <td>30</td>
+                <td></td>
+                <td><img src="images/Chocolate ville.png"></td>
+                <td></td>
+                <td></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.72357458519856, 100.53960314252973">
+                <td>Vertigo & Moon Bar Rooftop</td>
+                <td>Rooftop bar</td>
+                <td></td>
+                <td>15</td>
+                <td><img src="images/vertigo and moon.png"></td>
+                <td><img src="images/Vertigo & Moon.png"></td>
+                <td></td>
+                <td></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.742621067010667, 100.5465300975783">
+                <td>Akara Sky Hanuman</td>
+                <td>Rooftop bar</td>
+                <td></td>
+                <td>15</td>
+                <td><img src="images/hanuman.png"><img src="images/hanuman bar.png"></td>
+                <td><img src="images/Akara Sky Hanuman.png"></td>
+                <td></td>
+                <td></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.723607220911838, 100.58037512043444">
+                <td>Octave Rooftop</td>
+                <td>Rooftop bar</td>
+                <td></td>
+                <td>21</td>
+                <td><img src="images/Octave Rooftop.png"></td>
+                <td><img src="images/Octave Rooftop map.png"></td>
+                <td></td>
+                <td></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.783337172500357, 100.26916725931477">
+                <td>After the rain</td>
+                <td>cafe</td>
+                <td></td>
+                <td>26</td>
+                <td><img src="images/after the rain.png"></td>
+                <td><img src="images/After the rain map.png"></td>
+                <td></td>
+                <td>8:30 am–6 pm (closed monday)</td>
+                <td class="distance"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <h2>Ideas</h2>
+    <ul>
+        <li>Go wat pho first then get back to grand palace/wat phra then ride the boat down to wat arun</li>
+    </ul>
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script>
+function haversineDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371; // Radius of the Earth in kilometers
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = 
+            0.5 - Math.cos(dLat)/2 + 
+            Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+            (1 - Math.cos(dLon)) / 2;
+
+        return R * 2 * Math.asin(Math.sqrt(a));
+    }
+
+    function filterPlaces() {
+        const category = document.getElementById('category').value;
+        const area = document.getElementById('area').value;
+        const maxTime = document.getElementById('maxTime').value;
+        const location = document.getElementById('location').value.split(','); // Split lat and lon
+        const latitude = parseFloat(location[0]); // Latitude
+        const longitude = parseFloat(location[1]); // Longitude
+        const rows = document.querySelectorAll('#placesTable tbody tr');
+
+        rows.forEach(row => {
+            const cells = row.cells;
+            const rowCategory = cells[1].textContent; // Category column
+            const rowArea = cells[2].textContent; // Area column
+            const rowTime = parseInt(cells[3].textContent, 10); // Time column
+            const rowLocation = row.getAttribute('data-location').split(','); // Split lat and lon
+            const rowLat = parseFloat(rowLocation[0]); // Latitude
+            const rowLon = parseFloat(rowLocation[1]); // Longitude
+
+            let showRow = true;
+
+            if (category !== 'all' && rowCategory !== category) {
+                showRow = false;
+            }
+
+            if (area !== 'all' && rowArea !== area) {
+                showRow = false;
+            }
+
+            if (maxTime && rowTime > maxTime) {
+                showRow = false;
+            }
+
+            if (!isNaN(latitude) && !isNaN(longitude)) {
+                const distance = haversineDistance(latitude, longitude, rowLat, rowLon).toFixed(2);
+                row.querySelector('.distance').textContent = distance;
+                if (showRow && isNaN(distance)) {
+                    showRow = false;
+                }
+            } else {
+                row.querySelector('.distance').textContent = '';
+            }
+
+            row.style.display = showRow ? '' : 'none';
+        });
+
+        // Sort rows by distance if latitude and longitude are provided
+        if (!isNaN(latitude) && !isNaN(longitude)) {
+            const tbody = document.querySelector('#placesTable tbody');
+            Array.from(rows)
+                .sort((a, b) => parseFloat(a.querySelector('.distance').textContent) - parseFloat(b.querySelector('.distance').textContent))
+                .forEach(row => tbody.appendChild(row));
+        }
+    }
+
+        function openModal(imgElement) {
+            const modal = document.getElementById("myModal");
+            const modalImg = document.getElementById("modalImg");
+
+            modal.style.display = "block";
+            modalImg.src = imgElement.src;
+        }
+
+        // Close the modal
+        function closeModal() {
+            const modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        // Attach event listeners to images after DOM content is loaded
+        document.addEventListener("DOMContentLoaded", () => {
+            const images = document.querySelectorAll('#placesTable img');
+            images.forEach(img => {
+                img.addEventListener('click', () => openModal(img));
+            });
+        });
+
+        function fillFilterOptions(columnIndex, selectId) {
+        const select = document.getElementById(selectId);
+        const options = new Set(); // Using Set to avoid duplicates
+
+        // Get all rows in the table body
+        const rows = document.querySelectorAll('#placesTable tbody tr');
+
+        // Iterate over each row and extract the content of the specified column
+        rows.forEach(row => {
+            const cells = row.cells;
+            const content = cells[columnIndex].textContent.trim(); // Trim whitespace
+            options.add(content); // Add content to Set to avoid duplicates
+        });
+
+        // Create and append new options based on unique content
+        options.forEach(option => {
+            const optionElement = document.createElement('option');
+            optionElement.value = option;
+            optionElement.textContent = option;
+            select.appendChild(optionElement);
+        });
+    }
+
+    // Call the function with the desired column index and select element ID
+    fillFilterOptions(1, 'category'); // Example: Fill options for category filter based on column index 1
+    fillFilterOptions(2, 'area');     
+    </script>
+</body>
+</html>
