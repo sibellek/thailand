@@ -57,25 +57,26 @@
 <body>
     <h1>Places to Visit</h1>
 <br/>
+    <a href="#placesTable-phuket">phuket</a>
     <h1>Bangkok 6th to 10th (4 nights)</h1>
-    <label for="category">Filter by Category:</label>
-    <select id="category" onchange="filterPlaces()">
+    <label for="category-bangkok">Filter by Category:</label>
+    <select id="category-bangkok" onchange="filterPlaces('bangkok')">
         <option value="all">All</option>
         <!-- Add more categories as needed -->
     </select>
 
-    <label for="area">Filter by Area:</label>
-    <select id="area" onchange="filterPlaces()">
+    <label for="area-bangkok">Filter by Area:</label>
+    <select id="area-bangkok" onchange="filterPlaces('bangkok')">
         <option value="all">All</option>
     </select>
 
-    <label for="maxTime">Max Time from Hotel (minutes):</label>
-    <input type="number" id="maxTime" oninput="filterPlaces()">
+    <label for="maxTime-bangkok">Max Time from Hotel (minutes):</label>
+    <input type="number" id="maxTime-bangkok" oninput="filterPlaces('bangkok')">
 
-    <label for="location">Your Location:</label>
-    <input type="text" step="0.000001" id="location" onchange="filterPlaces()">
+    <label for="location-bangkok">Your Location:</label>
+    <input type="text" step="0.000001" id="location-bangkok" onchange="filterPlaces('bangkok')">
 <br/><br/>
-    <table id="placesTable">
+    <table id="placesTable-bangkok">
         <thead>
             <tr>
                 <th>Place Name</th>
@@ -313,8 +314,196 @@
         </tbody>
     </table>
     <br>
+    <br/><br/>
+    <a href="#placesTable-bangkok">bangkok</a>
+    <h1>Phuket 10th to 15th (5 nights)</h1>
+    <label for="category-phuket">Filter by Category:</label>
+    <select id="category-phuket" onchange="filterPlaces('phuket')">
+        <option value="all">All</option>
+        <!-- Add more categories as needed -->
+    </select>
+
+    <select id="area-phuket" style="display: none;" onchange="filterPlaces('phuket')">
+        <option value="all">All</option>
+    </select>
+
+    <label for="maxTime-phuket">Max Time from Hotel (minutes):</label>
+    <input type="number" id="maxTime-phuket" oninput="filterPlaces('phuket')">
+
+    <label for="location-phuket">Your Location:</label>
+    <input type="text" step="0.000001" id="location-phuket" onchange="filterPlaces('phuket')">
+<br/><br/>
+    <table id="placesTable-phuket">
+        <thead>
+            <tr>
+                <th>Place Name</th>
+                <th>Category</th>
+                <th>TFH1</th>
+                <th>TFH2</th>
+                <th>Image</th>
+                <th>Map</th>
+                <th>Budget</th>
+                <th>Opening Hours</th>
+                <th>Distance (km)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-location="7.888024302928766, 98.27131752479143">
+                <td>The cozy cafe</td>
+                <td>Cafe</td>
+                <td></td>
+                <td>12</td>
+                <td><img src="images/The cozy cafe.jpeg"></td>
+                <td><img src="images/The cozy cafe map.png"></td>
+                <td></td>
+                <td>10:00 am - 9:00 pm</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="7.961022058388211, 98.28393126236475">
+                <td>Café Del Mar</td>
+                <td>Beach club</td>
+                <td></td>
+                <td>20</td>
+                <td>It has a pool, sun beds, music party, sometimes fire show, looks good</td>
+                <td><img src="images/Café Del Mar map.png"></td>
+                <td></td>
+                <td>from 12pm - Late<br>
+                    Last food order until 10:30 p.m.<br>
+                    Last beverage order until 11:30 p.m.</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="7.827577655626281, 98.31283961488545">
+                <td>Big Buddha</td>
+                <td>Landmark/Temple</td>
+                <td>32</td>
+                <td>33</td>
+                <td></td>
+                <td><img src="images/Big buddha map1.png"><img src="images/Big buddha map2.png"></td>
+                <td>free</td>
+                <td>6 am–6:30 pm</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="7.84667800883898, 98.33688078055265">
+                <td>Wat Chalong</td>
+                <td>Landmark/Temple</td>
+                <td>20</td>
+                <td>25</td>
+                <td></td>
+                <td><img src="images/Wat chalong map1.png"><img src="images/Wat chalong map2.png"></td>
+                <td>free</td>
+                <td>7:00 AM to 5:00 PM</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="7.876298018692297, 98.35159452406637">
+                <td>Three monkeys</td>
+                <td>Restaurant</td>
+                <td>19</td>
+                <td>24</td>
+                <td></td>
+                <td><img src="images/Three monkeys map1.png"><img src="images/Three monkeys map2.png"></td>
+                <td></td>
+                <td>10 am–11 pm</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="7.884890421463103, 98.38779036289301">
+                <td>korrakang phuket old town</td>
+                <td>Cafe</td>
+                <td>18</td>
+                <td>25</td>
+                <td>The one with the pink flowers in old town</td>
+                <td><img src="images/korrakang phuket map1.png"><img src="images/korrakang phuket map2.png"></td>
+                <td></td>
+                <td>10 a.m. - 10 p.m.</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="7.907112378761198, 98.33000483315288">
+                <td>Tiger Kingdom</td>
+                <td>Landmark/Temple</td>
+                <td></td>
+                <td>12</td>
+                <td></td>
+                <td><img src="images/Tiger Kingdom.png"></td>
+                <td></td>
+                <td>9 am–5:30 pm</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="7.949385716495296, 98.2772605594854">
+                <td>Cafe Phuket Viewpoint</td>
+                <td>Cafe</td>
+                <td></td>
+                <td>17</td>
+                <td>There's shit to take pics in<img src="images/viewpopint.jpg"></td>
+                <td><img src="images/viewpoint map.png"></td>
+                <td></td>
+                <td></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="7.886673109192595, 98.28569378700405">
+                <td>Amari phuket</td>
+                <td>Cafe</td>
+                <td>Need to make reservation (I can't seem to find the pics like tiktok)</td>
+                <td>7</td>
+                <td><img src="images/amari.png"></td>
+                <td><img src="images/amari map.png"></td>
+                <td></td>
+                <td>12:00 to 22:30</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="7.907044820478323, 98.37328567197267">
+                <td>Chillva market</td>
+                <td>Market</td>
+                <td>9 mins from old town</td>
+                <td>18</td>
+                <td><img src="images/chillva-market-phuket.webp"></td>
+                <td><img src="images/Chillva market map.png"></td>
+                <td></td>
+                <td>5–11 pm</td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.726497050839654, 100.50996228845554">
+                <td>A blanket and a pillow</td>
+                <td>Cafe</td>
+                <td></td>
+                <td>17</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.74719589845591, 100.53916556314402">
+                <td>meg khram</td>
+                <td>Restaurant</td>
+                <td></td>
+                <td>8</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="distance"></td>
+            </tr>
+            <tr data-location="13.726497050839654, 100.50996228845554">
+                <td>Carnival magic</td>
+                <td>44</td>
+                <td>19</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Monday, Wednesday & Saturday. Operating hours are 5:30 pm – 11:30 pm</td>
+                <td class="distance"></td>
+            </tr>
+        </tbody>
+    </table>
+    <br/>
     <h2>Ideas</h2>
     <ul>
+        <li>Lots of different beach clubs in phuket <a href="https://vt.tiktok.com/ZSYjRQoRN/">tiktok video</a> - tichuca</li>
+        <li>Bud's bar is a good bar in patong</li>
+        <li>When going to old town, can put the road Soi romanee as location to get to nice road</li>
+        <li>PFlamingo beach bar thing close to first hotel</li>
+        <li>Paradise Beach (this one closest), Freedom beach, kata noi beach</li>
+        <li>View points: promthep cape, Karon View Point</li>
         <li>Go wat pho first then get back to grand palace/wat phra then ride the boat down to wat arun</li>
     </ul>
     <div id="myModal" class="modal">
@@ -335,14 +524,14 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
         return R * 2 * Math.asin(Math.sqrt(a));
     }
 
-    function filterPlaces() {
-        const category = document.getElementById('category').value;
-        const area = document.getElementById('area').value;
-        const maxTime = document.getElementById('maxTime').value;
-        const location = document.getElementById('location').value.split(','); // Split lat and lon
+    function filterPlaces(city) {
+        const category = document.getElementById('category-' + city).value;
+        const area = document.getElementById('area-' + city).value;
+        const maxTime = document.getElementById('maxTime-' + city).value;
+        const location = document.getElementById('location-' + city).value.split(','); // Split lat and lon
         const latitude = parseFloat(location[0]); // Latitude
         const longitude = parseFloat(location[1]); // Longitude
-        const rows = document.querySelectorAll('#placesTable tbody tr');
+        const rows = document.querySelectorAll('#placesTable-' + city + ' tbody tr');
 
         rows.forEach(row => {
             const cells = row.cells;
@@ -382,7 +571,7 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
 
         // Sort rows by distance if latitude and longitude are provided
         if (!isNaN(latitude) && !isNaN(longitude)) {
-            const tbody = document.querySelector('#placesTable tbody');
+            const tbody = document.querySelector('#placesTable-' + city + ' tbody');
             Array.from(rows)
                 .sort((a, b) => parseFloat(a.querySelector('.distance').textContent) - parseFloat(b.querySelector('.distance').textContent))
                 .forEach(row => tbody.appendChild(row));
@@ -405,18 +594,18 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
 
         // Attach event listeners to images after DOM content is loaded
         document.addEventListener("DOMContentLoaded", () => {
-            const images = document.querySelectorAll('#placesTable img');
+            const images = document.querySelectorAll('table img');
             images.forEach(img => {
                 img.addEventListener('click', () => openModal(img));
             });
         });
 
-        function fillFilterOptions(columnIndex, selectId) {
+        function fillFilterOptions(columnIndex, selectId, city) {
         const select = document.getElementById(selectId);
         const options = new Set(); // Using Set to avoid duplicates
 
         // Get all rows in the table body
-        const rows = document.querySelectorAll('#placesTable tbody tr');
+        const rows = document.querySelectorAll('#placesTable-' + city + ' tbody tr');
 
         // Iterate over each row and extract the content of the specified column
         rows.forEach(row => {
@@ -435,8 +624,9 @@ function haversineDistance(lat1, lon1, lat2, lon2) {
     }
 
     // Call the function with the desired column index and select element ID
-    fillFilterOptions(1, 'category'); // Example: Fill options for category filter based on column index 1
-    fillFilterOptions(2, 'area');     
+    fillFilterOptions(1, 'category-bangkok','bangkok'); // Example: Fill options for category filter based on column index 1
+    fillFilterOptions(2, 'area-bangkok','bangkok');     
+    fillFilterOptions(1, 'category-phuket','phuket');     
     </script>
 </body>
 </html>
